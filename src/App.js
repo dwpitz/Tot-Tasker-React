@@ -25,13 +25,13 @@ class App extends React.Component {
       }
     );
     const parsedRegisterResponse = await response.json(); 
-      // if (parsedRegisterResponse.status.code === 200) {
-  //   this.setState({
-  //     loggedIn: True
-  //   })
-  // } else {
-  //   console.log(parsedRegisterResponse);
-  // }   
+      if (parsedRegisterResponse.status.code === 200) {
+    this.setState({
+      loggedIn: true
+    })
+  } else {
+    console.log(parsedRegisterResponse);
+  }   
   }
 
   login = async (login) => {
