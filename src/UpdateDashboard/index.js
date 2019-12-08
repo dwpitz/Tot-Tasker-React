@@ -1,7 +1,10 @@
 import React, { Component} from "react";
-import addTots from './AddTots';
+import AddTots from '../AddTots';
+import '../App.css';
+import NavBar from '../Nav';
+import { Header, Form, Label, Divider, Button, Container } from "semantic-ui-react";
 
-class updateContainer extends React.Component {
+class UpdateDashboard extends Component {
   constructor() {
     super();
     this.state = {
@@ -9,16 +12,17 @@ class updateContainer extends React.Component {
     };
   }
 
-
   render(){
   	return(
-  		<addTots/>
-  		)
+  		<div>
+  			<AddTots/>
+  		</div>
+  	)
   }
 
 
 }
 
-export default updateContainer;
+export default UpdateDashboard;
 
 

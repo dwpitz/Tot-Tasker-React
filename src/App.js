@@ -1,9 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import NavBar from './Nav'
+import NavBar from './Nav';
 import LoginForm from './LoginForm';
-import RegistrationForm from './RegistrationForm'
+import RegistrationForm from './RegistrationForm';
+import UpdateDashboard from './UpdateDashboard';
+import AddTots from './AddTots';
 import { Form, Header } from "semantic-ui-react";
 
 class App extends React.Component {
@@ -80,10 +82,8 @@ class App extends React.Component {
     return(
       <div>
         <NavBar/>
-        <Header>
-        <updateContainer/>
-          {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : <LoginForm login={this.login} registerForm={this.registerForm}/>}         
-        </Header>
+        <UpdateDashboard/>
+         {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : <LoginForm login={this.login} registerForm={this.registerForm}/>}          
       </div>
     )
     

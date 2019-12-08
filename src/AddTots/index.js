@@ -1,6 +1,7 @@
 import React, { Component} from "react";
+import { Header, Form, Label, Divider, Button, Container } from "semantic-ui-react";
 
-class addTots extends Component {
+class AddTots extends Component {
 	constructor() {
 		super();
 
@@ -20,7 +21,7 @@ class addTots extends Component {
   	return(
   		<div>
 				<Container>
-				<Form className="registrationForm" onSubmit={this.handleSubmit}>
+				<Form className="" onSubmit={this.handleSubmit}>
 					<Form.Field>
 					<Label>Child 1:</Label>
 					<Form.Input
@@ -31,6 +32,7 @@ class addTots extends Component {
             		></Form.Input>
             		</Form.Field>
 					<Divider hidden />
+					<Form.Field>
 					<Label>Image 1:</Label>
 					<Form.Input
               			type="image"
@@ -56,6 +58,7 @@ class addTots extends Component {
               			// onChange={this.handleChange}
             		></Form.Input>
             		<Divider hidden />
+            		<Form.Field>
             		<Label>Child 3:</Label>
 					<Form.Input
               			type="text"
@@ -73,6 +76,7 @@ class addTots extends Component {
               			// onChange={this.handleChange}
             		></Form.Input>
             		<Divider hidden />
+            		<Form.Field>
             		<Label>Child 4:</Label>
 					<Form.Input
               			type="text"
@@ -94,10 +98,6 @@ class addTots extends Component {
 						Register
             		</Button>
             		<Divider hidden />
-            	<small>
-              		Already have an account? {" "}.
-              		<span onClick={this.switchForm}>LOGIN HERE</span>
-            	</small>
             	</Form>
             	</Container>
 			</div>
@@ -106,4 +106,4 @@ class addTots extends Component {
   }
 }
 
-export default addTots;
+export default AddTots;
