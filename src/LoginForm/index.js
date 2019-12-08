@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import { Header, Form, Label, Divider, Button } from "semantic-ui-react";
 
-class LoginRegisterForm extends Component {
+class LoginForm extends Component {
 	constructor() {
 		super();
 
@@ -64,4 +64,4 @@ class LoginRegisterForm extends Component {
 }
 
 
-export default LoginRegisterForm;
+export default LoginForm;

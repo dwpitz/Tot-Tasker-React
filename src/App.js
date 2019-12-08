@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LoginRegisterForm from './LoginRegisterForm';
+import LoginForm from './LoginForm';
+import RegistrationForm from './RegistrationForm'
 import { Form, Header } from "semantic-ui-react";
 
 class App extends React.Component {
@@ -62,7 +63,8 @@ class App extends React.Component {
     return(
       <div>
         <Header>
-          <LoginRegisterForm login={this.login}/>
+          
+          <RegistrationForm register={this.register}/>
         </Header>
       </div>
     )
