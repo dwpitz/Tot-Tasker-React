@@ -80,7 +80,8 @@ class App extends React.Component {
     return(
       <div>
         <NavBar/>
-        <Header> 
+        <Header>
+        <updateContainer/>
           {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : <LoginForm login={this.login} registerForm={this.registerForm}/>}         
         </Header>
       </div>

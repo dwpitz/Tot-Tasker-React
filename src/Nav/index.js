@@ -11,7 +11,7 @@ class NavBar extends Component {
 
 	render() {
 		return (
-			<Menu className="Menu">
+			<Menu className="navBar">
 				<Menu.Item
 					name="Tot Tasker"
 					// onClick={}
