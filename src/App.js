@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './Nav'
 import LoginForm from './LoginForm';
 import RegistrationForm from './RegistrationForm'
 import { Form, Header } from "semantic-ui-react";
@@ -78,6 +79,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
+        <NavBar/>
         <Header> 
           {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : <LoginForm login={this.login} registerForm={this.registerForm}/>}         
         </Header>

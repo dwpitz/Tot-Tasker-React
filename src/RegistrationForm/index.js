@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import { Header, Form, Label, Divider, Button } from "semantic-ui-react";
+import { Header, Form, Label, Divider, Button, Container } from "semantic-ui-react";
 
 class RegistrationForm extends Component {
 	constructor() {
@@ -38,11 +38,9 @@ class RegistrationForm extends Component {
 	render() {
 		return(
 			<div>
-				<Header>
-					<h1> Tot Tasker </h1>
-				</Header>
-
-				<Form onSubmit={this.handleSubmit}>
+				<Container>
+				<Form className="registrationForm" onSubmit={this.handleSubmit}>
+					<Form.Field>
 					<Label>Family Name:</Label>
 					<Form.Input
               			type="text"
@@ -50,6 +48,7 @@ class RegistrationForm extends Component {
               			value={this.state.familyName}
               			onChange={this.handleChange}
             		></Form.Input>
+            		</Form.Field>
 					<Divider hidden />
 					<Label>Email:</Label>
 					<Form.Input
@@ -94,11 +93,13 @@ class RegistrationForm extends Component {
 					<Button type="Submit">
 						Register
             		</Button>
-            	</Form>
+            		<Divider hidden />
             	<small>
               		Already have an account? {" "}.
               		<span onClick={this.switchForm}>LOGIN HERE</span>
             	</small>
+            	</Form>
+            	</Container>
 			</div>
 		)
 	}

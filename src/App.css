@@ -28,6 +28,20 @@
   color: #61dafb;
 }
 
+.loginForm {
+  margin: auto;
+  width: 40%;
+  border: 1px solid black;
+  padding: 5%;
+}
+
+.registrationForm {
+  margin: auto;
+  width: 60%;
+  border: 1px solid black;
+  padding: 5%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

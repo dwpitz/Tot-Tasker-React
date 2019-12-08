@@ -37,11 +37,8 @@ class LoginForm extends Component {
 	render() {
 		return(
 			<div>
-				<Header>
-					<h1> Tot Tasker </h1>
-				</Header>
 
-				<Form onSubmit={this.handleSubmit}>
+				<Form className="loginForm" onSubmit={this.handleSubmit}>
 					<Label>Family Name:</Label>
 					<Form.Input
               			type="text"
@@ -61,11 +58,12 @@ class LoginForm extends Component {
 					<Button type="Submit">
 						Login
             		</Button>
-            	</Form>
-            	<small>
+            		<Divider hidden />
+            		<small>
               		New To Tot Tasker? {" "}.
               		<span onClick={this.switchForm}>SIGN UP HERE</span>
             	</small>
+            	</Form>
 			</div>
 		)
 	}
