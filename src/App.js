@@ -13,7 +13,9 @@ class App extends React.Component {
     super();
     this.state = {
       loggedIn: false,
+      loadLogin: true,
       loadRegistration: false,
+      loadAccountUpdate: false
       // showLogin: true
     };
   }
@@ -42,15 +44,31 @@ class App extends React.Component {
   //This function switches the state of loadRegistration, which loads the registration form.
   registerForm = () => {
     this.setState({
-      loadRegistration: true
+      loadRegistration: true,
+      loadLogin: false,
+      loadAccountUpdate: false
     })
   }
 
   loginForm = () => {
     this.setState({
-      loadRegistration: false
+      loadLogin: true,
+      loadRegistration: false,
+      loadAccountUpdate: false
+
     })
   }
+
+  loadAccountUpdate = () => {
+    console.log('hitting the loadAccountUpdate')
+    this.setState({
+      loadAccountUpdate: true,
+      loadRegistration: false,
+      loadLogin: false
+    })
+    console.log(this.state);
+  }
+  
   
 
   login = async (login) => {
@@ -81,9 +99,15 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <NavBar/>
-        <UpdateDashboard/>
-         {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : <LoginForm login={this.login} registerForm={this.registerForm}/>}          
+        <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
+        {this.state.loadAccountUpdate ? <UpdateDashboard/> : null}
+        {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : null}
+        {this.state.loadLogin ? <LoginForm login={this.login} registerForm={this.registerForm}/>: null}
+
+
+
+
+                
       </div>
     )
     

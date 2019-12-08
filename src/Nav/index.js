@@ -9,6 +9,13 @@ class NavBar extends Component {
 		}
 	}
 
+	handleAccountClick = () => {
+		this.props.loadAccountUpdate()
+	}
+	
+
+	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
 	render() {
 		return (
 			<Menu className="navBar">
@@ -20,7 +27,7 @@ class NavBar extends Component {
 				</Menu.Item>
 				<Menu.Item
 					name="Account"
-					// onClick={}
+					onClick={this.handleAccountClick}
 				>
 					ACCOUNT
 				</Menu.Item>
