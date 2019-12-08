@@ -31,6 +31,10 @@ class RegistrationForm extends Component {
     	this.props.register(this.state);
   	};
 
+  	switchForm = () => {
+  		this.props.loginForm() 		
+  	}
+
 	render() {
 		return(
 			<div>
@@ -92,7 +96,8 @@ class RegistrationForm extends Component {
             		</Button>
             	</Form>
             	<small>
-              		Already have an account? Sign in HERE.
+              		Already have an account? {" "}.
+              		<span onClick={this.switchForm}>LOGIN HERE</span>
             	</small>
 			</div>
 		)

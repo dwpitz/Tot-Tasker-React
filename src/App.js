@@ -9,7 +9,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      loadRegistration: false,
+      // showLogin: true
     };
   }
 
@@ -33,6 +35,20 @@ class App extends React.Component {
     console.log(parsedRegisterResponse);
   }   
   }
+
+  //This function switches the state of loadRegistration, which loads the registration form.
+  registerForm = () => {
+    this.setState({
+      loadRegistration: true
+    })
+  }
+
+  loginForm = () => {
+    this.setState({
+      loadRegistration: false
+    })
+  }
+  
 
   login = async (login) => {
     console.log(this.state)
@@ -62,9 +78,8 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <Header>
-          
-          <RegistrationForm register={this.register}/>
+        <Header> 
+          {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : <LoginForm login={this.login} registerForm={this.registerForm}/>}         
         </Header>
       </div>
     )

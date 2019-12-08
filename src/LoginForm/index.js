@@ -8,7 +8,8 @@ class LoginForm extends Component {
 		this.state = {
 			familyName: "",
 			password: "",
-			action: "login"
+			action: "login",
+			loadRegistration: false
 		};
 	}
 
@@ -26,6 +27,12 @@ class LoginForm extends Component {
     	e.preventDefault();
     	this.props.login(this.state);
   	};
+
+  	switchForm = () => {
+  		this.props.registerForm()
+  		
+  	}
+  	
 
 	render() {
 		return(
@@ -56,7 +63,8 @@ class LoginForm extends Component {
             		</Button>
             	</Form>
             	<small>
-              		New To Tot Tasker? Sign up HERE.
+              		New To Tot Tasker? {" "}.
+              		<span onClick={this.switchForm}>SIGN UP HERE</span>
             	</small>
 			</div>
 		)
