@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: true
+      loggedIn: false
     };
   }
 
@@ -23,21 +23,46 @@ class App extends React.Component {
         }
       }
     );
-    const parsedRegisterResponse = await response.json();    
-  }
-  // if (parsedRegisterResponse.status.code === 200) {
+    const parsedRegisterResponse = await response.json(); 
+      // if (parsedRegisterResponse.status.code === 200) {
   //   this.setState({
   //     loggedIn: True
   //   })
   // } else {
   //   console.log(parsedRegisterResponse);
-  // }
+  // }   
+  }
+
+  login = async (login) => {
+    console.log(this.state)
+    const response = await fetch(process.env.REACT_APP_API_URL + '/family/login',
+    {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(login),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    );
+    const parsedLoginResponse = await response.json();
+    if(parsedLoginResponse.status === 200) {
+      this.setState({
+          loggedIn: true
+        });
+      console.log(parsedLoginResponse);
+    } else {
+      console.log(this.state);
+    }  
+  }
+  
+
 
   render() {
     return(
       <div>
         <Header>
-          <LoginRegisterForm/>
+          <LoginRegisterForm login={this.login}/>
         </Header>
       </div>
     )

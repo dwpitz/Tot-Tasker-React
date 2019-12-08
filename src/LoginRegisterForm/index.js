@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import { Header, Form, Label, Divider } from "semantic-ui-react";
+import { Header, Form, Label, Divider, Button } from "semantic-ui-react";
 
 class LoginRegisterForm extends Component {
 	constructor() {
@@ -7,11 +7,25 @@ class LoginRegisterForm extends Component {
 
 		this.state = {
 			familyName: "",
-			email: "",
 			password: "",
 			action: "login"
 		};
 	}
+
+	handleChange = (e) => {
+		console.log("This is Handle Change");
+    	this.setState({
+      		[e.target.name]: e.target.value
+    	});
+    	console.log("Below is state after entering info");
+    	console.log(this.state);
+  	};
+
+  	handleSubmit = (e) => {
+  		console.log("This is Handle Submit");
+    	e.preventDefault();
+    	this.props.login(this.state);
+  	};
 
 	render() {
 		return(
@@ -19,31 +33,31 @@ class LoginRegisterForm extends Component {
 				<Header>
 					<h1> Tot Tasker </h1>
 				</Header>
-				<Label>Family Name:</Label>
-				<Form.Input
-              		type="text"
-              		name="familyName"
-              		// value={this.state.full_name}
-              		// onChange={this.handleChange}
-            ></Form.Input>
 
-				<Divider hidden />
-				<Label>Email:</Label>
-				<Form.Input
-              		type="text"
-              		name="email"
-              		// value={this.state.full_name}
-              		// onChange={this.handleChange}
-            ></Form.Input>
-				<Divider hidden />
-				<Label>Password:</Label>
-				<Form.Input
-              		type="text"
-              		name="password"
-              		// value={this.state.full_name}
-              		// onChange={this.handleChange}
-            ></Form.Input>
-				<Divider hidden />	
+				<Form onSubmit={this.handleSubmit}>
+					<Label>Family Name:</Label>
+					<Form.Input
+              			type="text"
+              			name="familyName"
+              			value={this.state.familyName}
+              			onChange={this.handleChange}
+            		></Form.Input>
+					<Divider hidden />
+					<Label>Password:</Label>
+					<Form.Input
+              			type="text"
+              			name="password"
+              			value={this.state.password}
+              			onChange={this.handleChange}
+            		></Form.Input>
+					<Divider hidden />
+					<Button type="Submit">
+						Login
+            		</Button>
+            	</Form>
+            	<small>
+              		New To Tot Tasker? Sign up HERE.
+            	</small>
 			</div>
 		)
 	}
