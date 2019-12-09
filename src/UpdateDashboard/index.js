@@ -8,7 +8,7 @@ class UpdateDashboard extends Component {
   constructor(props) {
     super();
     this.state = {
-      familyID: ""
+
     };
   }
 
@@ -17,9 +17,9 @@ class UpdateDashboard extends Component {
     console.log(totFromForm);
     console.log(this.state.familyID);
     const createTotResponse = await fetch(
-        process.env.REACT_APP_API_URL + "/tots/" + this.state.familyID,
+        process.env.REACT_APP_API_URL + "/tots/",
         {
-          method: "GET",
+          method: "POST",
           credentials: "include",
           body: JSON.stringify(),
           headers: {
