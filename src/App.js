@@ -16,6 +16,7 @@ class App extends React.Component {
       loadLogin: true,
       loadRegistration: false,
       loadAccountUpdate: false,
+      familyID: ""
       // showLogin: true
     };
   }
@@ -90,8 +91,6 @@ class App extends React.Component {
       familyID: id
     })
     console.log(this.state.familyID);
-    console.log('the session object');
-    console.log(parsedLoginResponse);
 
     if(parsedLoginResponse.status === 200) {
       this.setState({
@@ -102,14 +101,20 @@ class App extends React.Component {
     }  
   }
   
+
+
   render() {
     return(
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
-        {this.state.loadAccountUpdate ? <UpdateDashboard/> : null}
+        {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID}/> : null}
         {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : null}
         {this.state.loadLogin ? <LoginForm login={this.login} registerForm={this.registerForm}/>: null}
-             
+
+
+
+
+                
       </div>
     )
     

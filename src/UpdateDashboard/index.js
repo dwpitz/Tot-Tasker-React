@@ -8,6 +8,7 @@ class UpdateDashboard extends Component {
   constructor(props) {
     super();
     this.state = {
+      tots: []
 
     };
   }
@@ -15,9 +16,9 @@ class UpdateDashboard extends Component {
   createTot = async (totFromForm) => {
     console.log('hitting createTot Route');
     console.log(totFromForm);
-    console.log(this.state.familyID);
+    console.log(this.props.familyID);
     const createTotResponse = await fetch(
-        process.env.REACT_APP_API_URL + "/tots/",
+        process.env.REACT_APP_API_URL + "/tots/" + this.props.familyID,
         {
           method: "POST",
           credentials: "include",
