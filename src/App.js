@@ -15,7 +15,8 @@ class App extends React.Component {
       loggedIn: false,
       loadLogin: true,
       loadRegistration: false,
-      loadAccountUpdate: false
+      loadAccountUpdate: false,
+      familyID: ""
       // showLogin: true
     };
   }
@@ -84,23 +85,27 @@ class App extends React.Component {
     }
     );
     const parsedLoginResponse = await response.json();
+    const id = parsedLoginResponse.data[0]._id
+    console.log('This Is The Family ID from the Json REsponse');
+    this.setState({
+      familyID: id
+    })
+    console.log(this.state.familyID);
+
     if(parsedLoginResponse.status === 200) {
       this.setState({
           loggedIn: true
         });
-      console.log(parsedLoginResponse);
     } else {
       console.log(this.state);
     }  
   }
   
-
-
   render() {
     return(
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
-        {this.state.loadAccountUpdate ? <UpdateDashboard/> : null}
+        {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID}/> : null}
         {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : null}
         {this.state.loadLogin ? <LoginForm login={this.login} registerForm={this.registerForm}/>: null}
 
