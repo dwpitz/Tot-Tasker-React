@@ -24,6 +24,9 @@ class LoginForm extends Component {
     	this.props.login(this.state);
   	};
 
+
+    
+
   	switchForm = () => {
   		this.props.registerForm()
   		

@@ -5,6 +5,7 @@ import NavBar from './Nav';
 import LoginForm from './LoginForm';
 import RegistrationForm from './RegistrationForm';
 import UpdateDashboard from './UpdateDashboard';
+import FamilyDashboard from './FamilyDashboard'
 import AddTots from './AddTots';
 import { Form, Header } from "semantic-ui-react";
 
@@ -16,7 +17,8 @@ class App extends React.Component {
       loadLogin: true,
       loadRegistration: false,
       loadAccountUpdate: false,
-      familyID: ""
+      familyID: "",
+      totID: "",
       // showLogin: true
     };
   }
@@ -70,7 +72,6 @@ class App extends React.Component {
     console.log(this.state);
   }
   
-  
 
   login = async (login) => {  
     const response = await fetch(process.env.REACT_APP_API_URL + '/family/login',
@@ -91,9 +92,11 @@ class App extends React.Component {
           loggedIn: true,
           familyID: id
       });
+      console.log(parsedLoginResponse.data[0]);
     } else {
-      console.log(this.state);
+      
     }  
+
   }
   
 
@@ -102,7 +105,9 @@ class App extends React.Component {
     return(
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
+        {this.state.loggedIn ? <FamilyDashboard /> : null}
         {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID}/> : null }
+        {this.loggedIn ? this.state.loadLogin=false: null}
         {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : null}
         {this.state.loadLogin ? <LoginForm login={this.login} registerForm={this.registerForm}/>: null}           
       </div>

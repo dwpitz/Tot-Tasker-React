@@ -7,11 +7,12 @@ const ShowTots = (props) => {
 	// return null;
 	const totList = props.tots.map((tot) => {
 		return (
-			<Card key={tot.id}>
-  			<Card.Content>
-  				<Card.Header>{tot.name}</Card.Header>
-  			</Card.Content>
-  			</Card>
+
+				<Card key={tot.id}>
+  				<Card.Content>
+  					<Card.Header>{tot.name}</Card.Header>
+  				</Card.Content>
+  				</Card>
 		)	
 	})
 	console.log(totList);

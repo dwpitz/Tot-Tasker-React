@@ -3,7 +3,7 @@ import AddTots from '../AddTots';
 import ShowTots from '../ShowTotsUpdateDashboard';
 import '../App.css';
 import NavBar from '../Nav';
-import { Header, Form, Label, Divider, Button, Container } from "semantic-ui-react";
+import { Header, Form, Label, Divider, Button, Container, Grid } from "semantic-ui-react";
 
 class UpdateDashboard extends Component {
   constructor(props) {
@@ -75,9 +75,16 @@ class UpdateDashboard extends Component {
   render(){
   	return(
   		<div>
-  			<AddTots createTot={this.createTot}/> 
-        {this.state.tots.length > 0 ? <ShowTots tots={this.state.tots}/> : null}
-
+        <Grid>
+          <Grid.Column width={6}>
+  			   <AddTots createTot={this.createTot}/> 
+          </Grid.Column>
+          <Divider hidden />
+          <Divider hidden />
+          <Grid.Column width={4}>
+          {this.state.tots.length > 0 ? <ShowTots tots={this.state.tots}/> : null}
+          </Grid.Column>
+        </Grid>
   		</div>
   	)
   }

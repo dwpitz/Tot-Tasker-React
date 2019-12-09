@@ -27,7 +27,7 @@ class AddTots extends Component {
   	return(
   		<div>
 				<Container>
-				<Form className="" onSubmit={this.handleSubmit}>
+				<Form className="addTotsForm" onSubmit={this.handleSubmit}>
 					<Form.Field>
 					<Label>Add Tot:</Label>
 					<Form.Input
