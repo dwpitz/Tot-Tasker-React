@@ -21,8 +21,6 @@ class RegistrationForm extends Component {
     	this.setState({
       		[e.target.name]: e.target.value
     	});
-    	console.log("Below is state after entering info");
-    	console.log(this.state);
   	};
 
   	handleSubmit = (e) => {

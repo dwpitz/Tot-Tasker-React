@@ -72,8 +72,7 @@ class App extends React.Component {
   
   
 
-  login = async (login) => {
-    console.log(this.state)
+  login = async (login) => {  
     const response = await fetch(process.env.REACT_APP_API_URL + '/family/login',
     {
       method: "POST",
@@ -85,17 +84,13 @@ class App extends React.Component {
     }
     );
     const parsedLoginResponse = await response.json();
-    const id = parsedLoginResponse.data[0]._id
-    console.log('This Is The Family ID from the Json REsponse');
-    this.setState({
-      familyID: id
-    })
-    console.log(this.state.familyID);
 
     if(parsedLoginResponse.status === 200) {
+      const id = parsedLoginResponse.data[0]._id
       this.setState({
-          loggedIn: true
-        });
+          loggedIn: true,
+          familyID: id
+      });
     } else {
       console.log(this.state);
     }  
@@ -107,14 +102,9 @@ class App extends React.Component {
     return(
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
-        {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID}/> : null}
+        {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID}/> : null }
         {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : null}
-        {this.state.loadLogin ? <LoginForm login={this.login} registerForm={this.registerForm}/>: null}
-
-
-
-
-                
+        {this.state.loadLogin ? <LoginForm login={this.login} registerForm={this.registerForm}/>: null}           
       </div>
     )
     

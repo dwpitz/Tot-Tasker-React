@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import AddTots from '../AddTots';
+import ShowTots from '../ShowTotsUpdateDashboard';
 import '../App.css';
 import NavBar from '../Nav';
 import { Header, Form, Label, Divider, Button, Container } from "semantic-ui-react";
@@ -13,14 +14,44 @@ class UpdateDashboard extends Component {
     };
   }
 
+  componentDidMount() {
+    this.getTots();
+  }
+
   createTot = async (totFromForm) => {
-    console.log('hitting createTot Route');
+    console.log('This Is The Tot You Created, pre Json');
     console.log(totFromForm);
-    console.log(this.props.familyID);
     const createTotResponse = await fetch(
         process.env.REACT_APP_API_URL + "/tots/" + this.props.familyID,
         {
           method: "POST",
+          credentials: "include",
+          body: JSON.stringify(totFromForm),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+    console.log("This is the JSON response after making the fetch call")
+    const parsedTots = await createTotResponse.json();
+    // console.log(parsedTots.createdTot)
+
+    // put tot in array
+    this.setState({
+        tots: [...this.state.tots, parsedTots.createdTot]
+      });
+    console.log('Here is your state')
+    console.log(this.state);
+
+  }
+
+  getTots = async () => {
+    console.log('hitting Get Tots');
+    try {
+      const tots = await fetch(
+        process.env.REACT_APP_API_URL + "/family/" + this.props.familyID,
+        {
+          method: "GET",
           credentials: "include",
           body: JSON.stringify(),
           headers: {
@@ -28,16 +59,25 @@ class UpdateDashboard extends Component {
           }
         }
       );
-      console.log("The created response");
-      console.log(createTotResponse);
-  }
-  
+      const parsedTots = await tots.json();
+      console.log("Below is parsedTots from UpdateDashboard");
+      console.log(parsedTots);
 
+      this.setState({
+        tots: parsedTots.data.tots
+      });
+    } catch (err) {}
+    console.log("State from getTots");
+    console.log(this.state)
+
+  };
 
   render(){
   	return(
   		<div>
-  			<AddTots createTot = {this.createTot}/>
+  			<AddTots createTot={this.createTot}/> 
+        {this.state.tots.length > 0 ? <ShowTots tots={this.state.tots}/> : null}
+
   		</div>
   	)
   }

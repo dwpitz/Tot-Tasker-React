@@ -6,28 +6,19 @@ class AddTots extends Component {
 		super();
 
 		this.state = {
-			child1: "",
-			image1: "",
-			// child2: "",
-			// image2: "",
-			// child3: "",
-			// image3: "",
-			// child4: "",
-			// image4: "",
+			name: "",
+			image: ""
 		};
 	}
 
 	handleChange = (e) => {
-		console.log("This is Handle Change");
     	this.setState({
       		[e.target.name]: e.target.value
     	});
-    	console.log("Below is state after entering info");
-    	console.log(this.state);
+
   	};
 
   	handleSubmit = (e) => {
-  		console.log("This is Handle Submit");
     	e.preventDefault();
     	this.props.createTot(this.state);
   	};
@@ -38,21 +29,21 @@ class AddTots extends Component {
 				<Container>
 				<Form className="" onSubmit={this.handleSubmit}>
 					<Form.Field>
-					<Label>Child 1:</Label>
+					<Label>Add Tot:</Label>
 					<Form.Input
               			type="text"
-              			name="child1"
-              			value={this.state.child1}
+              			name="name"
+              			value={this.state.name}
               			onChange={this.handleChange}
             		></Form.Input>
             		</Form.Field>
 					<Divider hidden />
 					<Form.Field>
-					<Label>Image 1:</Label>
+					<Label>Add Image:</Label>
 					<Form.Input
               			type="text"
-              			name="image1"
-              			value={this.state.image1}
+              			name="image"
+              			value={this.state.image}
               			onChange={this.handleChange}
             		></Form.Input>
             		<Divider hidden />

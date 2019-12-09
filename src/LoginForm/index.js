@@ -14,16 +14,12 @@ class LoginForm extends Component {
 	}
 
 	handleChange = (e) => {
-		console.log("This is Handle Change");
     	this.setState({
       		[e.target.name]: e.target.value
     	});
-    	console.log("Below is state after entering info");
-    	console.log(this.state);
   	};
 
   	handleSubmit = (e) => {
-  		console.log("This is Handle Submit");
     	e.preventDefault();
     	this.props.login(this.state);
   	};
