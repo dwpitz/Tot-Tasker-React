@@ -22,6 +22,12 @@ class LoginForm extends Component {
   	handleSubmit = (e) => {
     	e.preventDefault();
     	this.props.login(this.state);
+      this.setState({
+        familyName: "",
+        password: "",
+        action: "login",
+        loadRegistration: false
+      })
   	};
 
 
@@ -42,6 +48,8 @@ class LoginForm extends Component {
 					<Form.Input
               			type="text"
               			name="familyName"
+                    placeholder='Family Name'
+                    icon='users'
               			value={this.state.familyName}
               			onChange={this.handleChange}
             		></Form.Input>
@@ -50,6 +58,7 @@ class LoginForm extends Component {
 					<Form.Input
               			type="text"
               			name="password"
+                    placeholder='Password'
               			value={this.state.password}
               			onChange={this.handleChange}
             		></Form.Input>

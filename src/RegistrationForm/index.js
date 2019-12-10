@@ -27,6 +27,15 @@ class RegistrationForm extends Component {
   		console.log("This is Handle Submit");
     	e.preventDefault();
     	this.props.register(this.state);
+      this.setState({
+        familyName: "",
+        email: "",
+        password: "",
+        admin1: "",
+        admin2: "",
+        admin3: "",
+        action: "register"
+      })
   	};
 
   	switchForm = () => {

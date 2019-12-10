@@ -110,6 +110,7 @@ class App extends React.Component {
       const id = parsedLoginResponse.data[0]._id
       this.setState({
           loggedIn: true,
+          loadFamilyDash: true,
           familyID: id
       });
       console.log(parsedLoginResponse.data[0]);
@@ -180,7 +181,7 @@ class App extends React.Component {
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
 
-        {this.state.loggedIn ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
+        {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
 
         {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null }
 

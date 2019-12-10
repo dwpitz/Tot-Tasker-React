@@ -21,6 +21,10 @@ class AddTots extends Component {
   	handleSubmit = (e) => {
     	e.preventDefault();
     	this.props.createTot(this.state);
+      this.setState({
+        name: "",
+        image: ""
+      })
   	};
 
 	render(){
