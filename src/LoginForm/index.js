@@ -28,7 +28,7 @@ class LoginForm extends Component {
     
 
   	switchForm = () => {
-  		this.props.registerForm()
+  		this.props.loadRegistrationScreen()
   		
   	}
   	

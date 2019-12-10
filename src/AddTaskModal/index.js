@@ -14,7 +14,17 @@ class AddTaskModal extends Component {
   }
 
   render() {
-  	// const totsList = 
+    console.log(this.props.tots);
+    let totsList = null
+    console.log("tots list before the map");
+    console.log(totsList);
+    
+    totsList = this.props.tots.map((tots) => {
+      return <option type="text" name={tots._id}>{tots.name}</option>
+    })
+    console.log("tots list AFTER the map");
+    console.log(totsList);
+
     return (
       <Modal
         open={this.props.editModalOpen}
@@ -25,23 +35,15 @@ class AddTaskModal extends Component {
         <Modal.Content>
           <Form>
             <Label> Assigned To: </Label>
-            <select name="pets" id="pet-select">
-    
-    			<option value="">--Please choose an option--</option>
-
-
-
-
-
-
-
-    			<option value="dog">Dog</option>
-    			<option value="cat">Cat</option>
-    			<option value="hamster">Hamster</option>
-    			<option value="parrot">Parrot</option>
-    			<option value="spider">Spider</option>
-    			<option value="goldfish">Goldfish</option>
-			</select>
+              <select
+                  type="text"
+                  name="tot"
+                  // value={this.state.start_date}
+                  // onChange={this.handleChange
+                >
+                <option>--Please choose an option--</option>
+                {totsList}
+			       </select>
 			<Divider hidden />
             <Label> Task: </Label>
             <Form.Input
@@ -52,7 +54,12 @@ class AddTaskModal extends Component {
             />
             <Divider hidden />
             <Label> Duration: </Label>
-            <select name="pets" id="pet-select">
+            <select
+              type="text"
+              name="reward"
+              // value={this.state.start_date}
+              // onChange={this.handleChange
+            >
     			<option value="">--Please choose an option--</option>
     			<option value="1">1 Day</option>
     			<option value="2">2 Days</option>

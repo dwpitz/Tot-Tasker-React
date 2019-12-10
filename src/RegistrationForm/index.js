@@ -30,7 +30,7 @@ class RegistrationForm extends Component {
   	};
 
   	switchForm = () => {
-  		this.props.loginForm() 		
+  		this.props.loadLoginForm() 		
   	}
 
 	render() {

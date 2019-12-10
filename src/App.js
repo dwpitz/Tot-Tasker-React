@@ -17,6 +17,7 @@ class App extends React.Component {
       loadLogin: true,
       loadRegistration: false,
       loadAccountUpdate: false,
+      loadFamilyDash: false,
       familyID: "",
       totID: "",
       tots: [],
@@ -45,20 +46,23 @@ class App extends React.Component {
   }   
   }
 
-  //This function switches the state of loadRegistration, which loads the registration form.
-  registerForm = () => {
+  //These functions switch the state of the UI.  
+  loadRegistrationScreen = () => {
     this.setState({
       loadRegistration: true,
       loadLogin: false,
-      loadAccountUpdate: false
+      loadAccountUpdate: false,
+      loadFamilyDash: false
     })
   }
 
-  loginForm = () => {
+  loadLoginForm = () => {
+    console.log('hitting this...');
     this.setState({
       loadLogin: true,
       loadRegistration: false,
-      loadAccountUpdate: false
+      loadAccountUpdate: false,
+      loadFamilyDash: false
 
     })
   }
@@ -68,7 +72,22 @@ class App extends React.Component {
     this.setState({
       loadAccountUpdate: true,
       loadRegistration: false,
-      loadLogin: false
+      loadLogin: false,
+      loadFamilyDash: false
+
+    })
+    console.log(this.state);
+  }
+
+  loadFamilyDash = () => {
+    console.log('hitting the Family Dashboard')
+    this.setState({
+      loadFamilyDash: true,
+      loadAccountUpdate: false,
+      loadRegistration: false,
+      loadLogin: false,
+      
+
     })
     console.log(this.state);
   }
@@ -160,11 +179,16 @@ class App extends React.Component {
     return(
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
-        {this.state.loggedIn ? <FamilyDashboard tots={this.state.tots} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
+
+        {this.state.loggedIn ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
+
         {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null }
-        {this.loggedIn ? this.state.loadLogin=false: null}
-        {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : null}
-        {this.state.loadLogin ? <LoginForm login={this.login} registerForm={this.registerForm}/>: null}           
+
+        {this.loggedIn ? this.state.loadLoginForm=false: null}
+
+        {this.state.loadRegistration ? <RegistrationForm loadRegistrationScreen={this.loadRegistrationScreen} loadLoginForm={this.loadLoginForm}/> : null}
+
+        {this.state.loadLogin ? <LoginForm login={this.login} loadLoginForm={this.loadLoginForm} loadRegistrationScreen={this.loadRegistrationScreen}/>: null}           
       </div>
     )
     

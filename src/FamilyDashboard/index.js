@@ -16,8 +16,14 @@ class FamilyDashboard extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.props.getTots();
+  componentDidMount() {
+    this.props.getTots();
+    this.props.loadFamilyDash()
+  }
+
+  // changeDisplay = () => {
+  //     console.log("hitting the Family Dash Function")
+  //     this.props.loadFamilyDash()
   // }
 
   closeModal = async () => {
@@ -32,6 +38,9 @@ class FamilyDashboard extends Component {
       editModalOpen: true
     })
     console.log(this.state);
+
+  
+    
 
 
 
@@ -66,7 +75,8 @@ class FamilyDashboard extends Component {
   		<div>
           <h1>Task Adder</h1>
         	<Icon onClick={this.createTask} name='plus' size='huge' />
-          <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.state.closeModal}/>
+          {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.state.closeModal} tots={this.props.tots}/> : null}
+          
   		</div>
   	)
   }
