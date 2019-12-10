@@ -14,19 +14,17 @@ class AddTaskModal extends Component {
   }
 
   handleChange = (e) => {
-    console.log("This is Handle Change");
       this.setState({
           [e.target.name]: e.target.value
       }); 
-      console.log('This is state after change') 
-      console.log(this.state);
     };
 
     handleSubmit = (e) => {
-      console.log(e.target);
       console.log("This is the state of the submission")
       console.log(this.state);
       e.preventDefault();
+      this.props.createTask(this.state)
+
       this.setState({
         taskName: "",
         tot: "",
@@ -41,8 +39,6 @@ class AddTaskModal extends Component {
     totsList = this.props.tots.map((tots) => {
       return <option type="text" value={tots._id}>{tots.name}</option>
     })
-
-    console.log("Tots List, post Map()");
 
     return (
       <Modal

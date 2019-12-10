@@ -26,45 +26,39 @@ class FamilyDashboard extends Component {
   //     this.props.loadFamilyDash()
   // }
 
+  openModal = () => {
+      this.setState({
+      editModalOpen: true
+    })
+  }
+  
+
   closeModal = async () => {
       this.setState({
         editModalOpen: false
       })
       
-    }
+    }  
 
   createTask = async (taskFromModal) => {
-    this.setState({
-      editModalOpen: true
-    })
-    console.log(this.state);
+    console.log('This Is The Task You Created in the Modal, pre JSON');
+    console.log(taskFromModal.tot);
+    const createTotResponse = await fetch(
+        process.env.REACT_APP_API_URL + "/tasks/" + taskFromModal.tot,
+        {
+          method: "POST",
+          credentials: "include",
+          body: JSON.stringify(taskFromModal),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+    console.log("This is the JSON response after making the fetch call")
+    const parsedTasks = await createTotResponse.json();
+    console.log(parsedTasks)
 
-  
-    
-
-
-
-    
-    
-    
-    // console.log('This Is The Task You Created, pre Json');
-    // console.log(taskFromModal);
-    // const createTotResponse = await fetch(
-    //     process.env.REACT_APP_API_URL + "/tasks/" + this.props.totID,
-    //     {
-    //       method: "POST",
-    //       credentials: "include",
-    //       body: JSON.stringify(taskFromModal),
-    //       headers: {
-    //         "Content-Type": "application/json"
-    //       }
-    //     }
-    //   );
-    // console.log("This is the JSON response after making the fetch call")
-    // const parsedTots = await createTotResponse.json();
-    // // console.log(parsedTots.createdTot)
-
-    // // put task in array
+    // put task in array
 
   }
 
@@ -74,8 +68,9 @@ class FamilyDashboard extends Component {
   	return(
   		<div>
           <h1>Task Adder</h1>
-        	<Icon onClick={this.createTask} name='plus' size='huge' />
-          {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.state.closeModal} tots={this.props.tots}/> : null}
+        	<Icon onClick={this.openModal} name='plus' size='huge' />
+
+          {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.state.closeModal} tots={this.props.tots} createTask={this.createTask}/> : null}
           
   		</div>
   	)
