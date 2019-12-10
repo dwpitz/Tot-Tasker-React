@@ -14,6 +14,7 @@ class AddTaskModal extends Component {
   }
 
   render() {
+  	// const totsList = 
     return (
       <Modal
         open={this.props.editModalOpen}
@@ -26,6 +27,13 @@ class AddTaskModal extends Component {
             <Label> Assigned To: </Label>
             <select name="pets" id="pet-select">
     			<option value="">--Please choose an option--</option>
+
+
+
+
+
+
+
     			<option value="dog">Dog</option>
     			<option value="cat">Cat</option>
     			<option value="hamster">Hamster</option>
@@ -45,16 +53,16 @@ class AddTaskModal extends Component {
             <Label> Duration: </Label>
             <select name="pets" id="pet-select">
     			<option value="">--Please choose an option--</option>
-    			<option value="dog">1 Day</option>
-    			<option value="cat">2 Days</option>
-    			<option value="hamster">3 Days</option>
-    			<option value="parrot">4 Days</option>
-    			<option value="spider">5 Days</option>
-    			<option value="goldfish">6 Days</option>
-    			<option value="hamster">7 Days</option>
-    			<option value="parrot">8 Days</option>
-    			<option value="spider">9 Days</option>
-    			<option value="goldfish">10 Days</option>
+    			<option value="1">1 Day</option>
+    			<option value="2">2 Days</option>
+    			<option value="3">3 Days</option>
+    			<option value="4">4 Days</option>
+    			<option value="5">5 Days</option>
+    			<option value="6">6 Days</option>
+    			<option value="7">7 Days</option>
+    			<option value="8">8 Days</option>
+    			<option value="9">9 Days</option>
+    			<option value="10">10 Days</option>
 			</select>
 			<Divider hidden />
             <Label> Reward: </Label>
