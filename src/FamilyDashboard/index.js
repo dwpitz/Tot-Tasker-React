@@ -16,6 +16,10 @@ class FamilyDashboard extends Component {
     };
   }
 
+  // componentDidMount() {
+  //   this.props.getTots();
+  // }
+
   closeModal = async () => {
       this.setState({
         editModalOpen: false
@@ -28,6 +32,8 @@ class FamilyDashboard extends Component {
       editModalOpen: true
     })
     console.log(this.state);
+
+
 
     
     

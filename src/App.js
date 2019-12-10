@@ -19,6 +19,7 @@ class App extends React.Component {
       loadAccountUpdate: false,
       familyID: "",
       totID: "",
+      tots: [],
       // showLogin: true
     };
   }
@@ -98,6 +99,60 @@ class App extends React.Component {
     }  
 
   }
+
+  getTots = async () => {
+    console.log('hitting Get Tots');
+    try {
+      const tots = await fetch(
+        process.env.REACT_APP_API_URL + "/family/" + this.state.familyID,
+        {
+          method: "GET",
+          credentials: "include",
+          body: JSON.stringify(),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+      const parsedTots = await tots.json();
+      console.log("Below is parsedTots from UpdateDashboard");
+      console.log(parsedTots);
+
+      this.setState({
+        tots: parsedTots.data.tots
+      });
+    } catch (err) {}
+    console.log("State from getTots");
+    console.log(this.state)
+
+  };
+
+  createTot = async (totFromForm) => {
+    console.log('This Is The Tot You Created, pre Json');
+    console.log(totFromForm);
+    const createTotResponse = await fetch(
+        process.env.REACT_APP_API_URL + "/tots/" + this.state.familyID,
+        {
+          method: "POST",
+          credentials: "include",
+          body: JSON.stringify(totFromForm),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+    console.log("This is the JSON response after making the fetch call")
+    const parsedTots = await createTotResponse.json();
+    // console.log(parsedTots.createdTot)
+
+    // put tot in array
+    this.setState({
+        tots: [...this.state.tots, parsedTots.createdTot]
+      });
+    console.log('Here is your state')
+    console.log(this.state);
+
+  }
   
 
 
@@ -105,8 +160,8 @@ class App extends React.Component {
     return(
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
-        {this.state.loggedIn ? <FamilyDashboard /> : null}
-        {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID}/> : null }
+        {this.state.loggedIn ? <FamilyDashboard tots={this.state.tots} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
+        {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null }
         {this.loggedIn ? this.state.loadLogin=false: null}
         {this.state.loadRegistration ? <RegistrationForm register={this.register} loginForm={this.loginForm}/> : null}
         {this.state.loadLogin ? <LoginForm login={this.login} registerForm={this.registerForm}/>: null}           

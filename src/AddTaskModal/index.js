@@ -26,6 +26,7 @@ class AddTaskModal extends Component {
           <Form>
             <Label> Assigned To: </Label>
             <select name="pets" id="pet-select">
+    
     			<option value="">--Please choose an option--</option>
 
 
