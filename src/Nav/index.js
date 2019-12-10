@@ -9,6 +9,11 @@ class NavBar extends Component {
 		}
 	}
 
+	handleHomeClick = () => {
+		this.props.loadFamilyDash()
+	}
+	
+
 	handleAccountClick = () => {
 		this.props.loadAccountUpdate()
 	}
@@ -21,7 +26,7 @@ class NavBar extends Component {
 			<Menu className="navBar">
 				<Menu.Item
 					name="Tot Tasker"
-					// onClick={}
+					onClick={this.handleHomeClick}
 				>
 					TOT TASKER
 				</Menu.Item>

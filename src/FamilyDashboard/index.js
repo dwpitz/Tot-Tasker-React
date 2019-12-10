@@ -3,6 +3,7 @@ import AddTots from '../AddTots';
 import '../App.css';
 import NavBar from '../Nav';
 import AddTaskModal from '../AddTaskModal';
+import ShowTasks from '../ShowTasksFamilyDashboard'
 import { Header, Form, Label, Divider, Button, Container, Icon, Modal } from "semantic-ui-react";
 
 class FamilyDashboard extends Component {
@@ -56,9 +57,12 @@ class FamilyDashboard extends Component {
       );
     console.log("This is the JSON response after making the fetch call")
     const parsedTasks = await createTotResponse.json();
-    console.log(parsedTasks)
-
+    console.log(parsedTasks.data.tasks)
     // put task in array
+    this.setState({
+        tasks: parsedTasks.data.tasks
+      });
+    
 
   }
 
@@ -71,6 +75,12 @@ class FamilyDashboard extends Component {
         	<Icon onClick={this.openModal} name='plus' size='huge' />
 
           {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.state.closeModal} tots={this.props.tots} createTask={this.createTask}/> : null}
+
+           {this.state.tasks.length > 0 ? <ShowTasks tasks={this.state.tasks}/> : null}
+
+
+
+          
           
   		</div>
   	)

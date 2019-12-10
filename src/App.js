@@ -163,7 +163,8 @@ class App extends React.Component {
       );
     console.log("This is the JSON response after making the fetch call")
     const parsedTots = await createTotResponse.json();
-    // console.log(parsedTots.createdTot)
+    console.log(parsedTots);
+    console.log(parsedTots.createdTot)
 
     // put tot in array
     this.setState({
@@ -179,7 +180,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <NavBar loadAccountUpdate={this.loadAccountUpdate}/>
+        <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash}/>
 
         {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
 
@@ -187,7 +188,7 @@ class App extends React.Component {
 
         {this.loggedIn ? this.state.loadLoginForm=false: null}
 
-        {this.state.loadRegistration ? <RegistrationForm loadRegistrationScreen={this.loadRegistrationScreen} loadLoginForm={this.loadLoginForm}/> : null}
+        {this.state.loadRegistration ? <RegistrationForm loadRegistrationScreen={this.loadRegistrationScreen} loadLoginForm={this.loadLoginForm} register={this.register}/> : null}
 
         {this.state.loadLogin ? <LoginForm login={this.login} loadLoginForm={this.loadLoginForm} loadRegistrationScreen={this.loadRegistrationScreen}/>: null}           
       </div>

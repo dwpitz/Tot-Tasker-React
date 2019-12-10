@@ -56,7 +56,7 @@ class LoginForm extends Component {
 					<Divider hidden />
 					<Label>Password:</Label>
 					<Form.Input
-              			type="text"
+              			type="password"
               			name="password"
                     placeholder='Password'
               			value={this.state.password}
