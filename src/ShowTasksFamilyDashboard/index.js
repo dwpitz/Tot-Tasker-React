@@ -11,6 +11,9 @@ const ShowTasks = (props) => {
 				<Card key={task.id}>
   				<Card.Content>
   					<Card.Header>{task.taskName}</Card.Header>
+  					<Card.Header>Days Until Reward Unlocked!</Card.Header>
+  					<Card.Header>{task.coundownToCompletion}</Card.Header>
+  					<Card.Header>Reward: {task.reward}</Card.Header>
   				</Card.Content>
   				</Card>
 		)	
