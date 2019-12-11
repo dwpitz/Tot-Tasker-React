@@ -17,13 +17,14 @@ import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress  
 
   componentDidMount() {
     this.setState({
-      	percent: 0,
+      	currentPercent: 0,
     	increments: 100 / this.props.task.coundownToCompletion,
     	percentage: 0
     })
   }
 
   incrementor = () => {
+  	// update your task
   	let currentIncrement = this.state.currentPercent + this.state.increments
   	this.setState({
   		percentage: currentIncrement

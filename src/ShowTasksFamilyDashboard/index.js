@@ -6,9 +6,7 @@ class ShowTasks extends React.Component {
   constructor(props) {
     super();
     this.state = {
-    	percent: 50,
-    	increments: 2,
-    	percentage: 0
+
     };
   }  
 
