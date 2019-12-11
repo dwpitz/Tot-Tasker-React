@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: true,
+      loggedIn: false,
       loadLogin: true,
       loadRegistration: false,
       loadAccountUpdate: false,
