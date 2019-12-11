@@ -89,10 +89,7 @@ class FamilyDashboard extends Component {
            {/*this.state.tasks.length > 0*/true  ? <ShowTasks tasks={this.state.tasks} tots={this.props.tots} /> : null}
 
 
-
-
-          
-          
+         
   		</div>
   	)
   }

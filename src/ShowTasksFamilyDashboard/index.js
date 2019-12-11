@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress  } from "semantic-ui-react";
+import TaskCard from '../TaskCard'
 
 class ShowTasks extends React.Component {
   constructor(props) {
@@ -9,16 +10,7 @@ class ShowTasks extends React.Component {
     	increments: 2,
     	percentage: 0
     };
-  }
-
-  incrementor = () => {
-  	let percent = 100 / this.state.increments
-  	this.setState({
-  		percentage: percent
-  	})
-  }
-
-  
+  }  
 
 
   render() {
@@ -27,18 +19,22 @@ class ShowTasks extends React.Component {
   					<Card.Content>
   						<Card.Header>{tot.name}</Card.Header>
   						{tot.tasks.map((task) => {
-  							<TaskCard task={tot.task} />
+  							return (
+  								<TaskCard task={task} />
+  							)
   						}
   						)}
   					</Card.Content>
   				</Card>	
-	})
 
+	})
 	return (<div>
 				{totList}
 			</div>
 	)	
+
   }
+
 }
 
 
