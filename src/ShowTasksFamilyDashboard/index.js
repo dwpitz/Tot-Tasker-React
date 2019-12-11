@@ -17,7 +17,7 @@ const ShowTasks = (props) => {
   							<div>
   								<h4>Task: {task.taskName}</h4>
   								<h5>Reward: {task.reward}</h5>
-  							<Progress percent={50}indicating/>
+  							<Progress percent={50} indicating/>
   							<Icon name='plus' size='large'/>
   							<Icon name='minus' size='large'/>
   							</div>
