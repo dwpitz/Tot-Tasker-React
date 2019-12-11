@@ -24,6 +24,7 @@ class AddTaskModal extends Component {
       console.log(this.state);
       e.preventDefault();
       this.props.createTask(this.state)
+      this.props.closeModal()
 
       this.setState({
         taskName: "",

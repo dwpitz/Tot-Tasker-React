@@ -5,18 +5,18 @@ const ShowTasks = (props) => {
 
 	console.log("hitting the showTasks function");
 	console.log(props);
-	let taskList = null
-	taskList = props.tasks.map((task) => {
+	const taskList = props.tasks.map((task) => {
 		return (
 
 				<Card key={task.id}>
   				<Card.Content>
-  					<Card.Header>{task.name}</Card.Header>
+  					<Card.Header>{task.taskName}</Card.Header>
   				</Card.Content>
   				</Card>
 		)	
 	})
 	console.log(taskList);
+
   return <Card.Group>{taskList}</Card.Group>;
 };
 

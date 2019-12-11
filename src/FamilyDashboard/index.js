@@ -57,10 +57,10 @@ class FamilyDashboard extends Component {
       );
     console.log("This is the JSON response after making the fetch call")
     const parsedTasks = await createTotResponse.json();
-    console.log(parsedTasks.data.tasks)
+    console.log(parsedTasks.createTask)
     // put task in array
     this.setState({
-        tasks: parsedTasks.data.tasks
+        tasks: [...this.state.tasks, parsedTasks.createTask]
       });
     
 
@@ -74,7 +74,7 @@ class FamilyDashboard extends Component {
           <h1>Task Adder</h1>
         	<Icon onClick={this.openModal} name='plus' size='huge' />
 
-          {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.state.closeModal} tots={this.props.tots} createTask={this.createTask}/> : null}
+          {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.closeModal} tots={this.props.tots} createTask={this.createTask}/> : null}
 
            {this.state.tasks.length > 0 ? <ShowTasks tasks={this.state.tasks}/> : null}
 
