@@ -37,8 +37,9 @@ class ShowTasks extends React.Component {
   					</Card.Content>
   				</Card>	
 	})
-	return (
+	return (<div>
 			{totList}
+			</div>
 	)	
   }
 }
