@@ -74,6 +74,11 @@ class FamilyDashboard extends Component {
     console.log(this.props.tots);
     console.log(this.props.tots.length);
 
+    // let showTasks = this.props.tots.map(tot => {
+    //   <ShowTasks tot=tot/>
+    // })
+
+
    	return(
   		<div>
           <h1>Task Adder</h1>
@@ -82,6 +87,7 @@ class FamilyDashboard extends Component {
           {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.closeModal} tots={this.props.tots} createTask={this.createTask}/> : null}
 
            {/*this.state.tasks.length > 0*/true  ? <ShowTasks tasks={this.state.tasks} tots={this.props.tots} /> : null}
+
 
 
 
@@ -94,4 +100,5 @@ class FamilyDashboard extends Component {
 }
   export default FamilyDashboard;
 
+           // { showTasks }
 

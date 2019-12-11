@@ -6,13 +6,18 @@ class ShowTasks extends React.Component {
     super();
     this.state = {
     	percent: 50,
-    	increments: 0
+    	increments: 2,
+    	percentage: 0
     };
   }
 
-  // increments = () => {
+  incrementor = () => {
+  	let percent = 100 / this.state.increments
+  	this.setState({
+  		percentage: percent
+  	})
+  }
 
-  // }
   
 
 
@@ -21,23 +26,16 @@ class ShowTasks extends React.Component {
   		return 	<Card>
   					<Card.Content>
   						<Card.Header>{tot.name}</Card.Header>
-  						{tot.tasks.map((task) => {	
-  							return (
-  								<div>
-  									<h4>Task: {task.taskName}</h4>
-  									<h5>Reward: {task.reward}</h5>
-  									<h5>Days Remaining: {task.	coundownToCompletion}</h5>
-  									<Progress percent={this.state.percent}	indicating/>
-  									<Icon name='plus' size='large'/>
-  									<Icon name='minus' size='large'/>
-  								</div>
-  							)}
+  						{tot.tasks.map((task) => {
+  							<TaskCard task={tot.task} />
+  						}
   						)}
   					</Card.Content>
   				</Card>	
 	})
+
 	return (<div>
-			{totList}
+				{totList}
 			</div>
 	)	
   }
@@ -45,5 +43,16 @@ class ShowTasks extends React.Component {
 
 
 
+  							// return (
+  							// 	<div>
+  							// 		<h4>Task: {task.taskName}</h4>
+  							// 		<h5>Reward: {task.reward}</h5>
+  							// 		<h5>Days Remaining: {task.	coundownToCompletion}</h5>
+
+  							// 		<Progress percent={this.state.percentage}	indicating autoSuccess/>
+  							// 		<Icon onClick={this.incrementor} name='plus' size='large'/>
+  							// 		<Icon name='minus' size='large'/>
+  							// 	</div>
+  							// )
 
 export default ShowTasks
