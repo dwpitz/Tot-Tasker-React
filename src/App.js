@@ -110,10 +110,8 @@ class App extends React.Component {
       this.setState({
           loggedIn: true,
           familyID: id
-      }, () => {
-        // this.loadFamilyDash();
-        // console.log("hey"); 
       });
+      this.loadFamilyDash();
     } else {
       
     }  
@@ -184,7 +182,7 @@ class App extends React.Component {
 
         {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null }
 
-        {this.loggedIn ? this.state.loadLoginForm=false: null}
+        {this.loggedIn ? this.state.loadLoginForm=false : null}
 
         {this.state.loadRegistration ? <RegistrationForm loadRegistrationScreen={this.loadRegistrationScreen} loadLoginForm={this.loadLoginForm} register={this.register}/> : null}
 

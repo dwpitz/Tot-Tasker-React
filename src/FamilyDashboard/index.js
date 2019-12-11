@@ -10,7 +10,7 @@ class FamilyDashboard extends Component {
   constructor(props) {
     super();
     this.state = {
-      // tasks: [],
+      tasks: [],
       // addTaskModal: false,
       editModalOpen: false,
 
@@ -18,6 +18,7 @@ class FamilyDashboard extends Component {
   }
 
   componentDidMount() {
+    console.log("componentDidMount in FamilyDashboard");
     this.props.getTots();
   }
 
@@ -69,14 +70,18 @@ class FamilyDashboard extends Component {
 
   render(){
     console.log("family dashboard render");
-  	return(
+    console.log(this.props);
+    console.log(this.props.tots);
+    console.log(this.props.tots.length);
+
+   	return(
   		<div>
           <h1>Task Adder</h1>
         	<Icon onClick={this.openModal} name='plus' size='huge' />
 
           {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.closeModal} tots={this.props.tots} createTask={this.createTask}/> : null}
 
-           {this.state.tasks.length > 0 ? <ShowTasks tasks={this.state.tasks}/> : null}
+           {/*this.state.tasks.length > 0*/true  ? <ShowTasks tasks={this.state.tasks} tots={this.props.tots} /> : null}
 
 
 
