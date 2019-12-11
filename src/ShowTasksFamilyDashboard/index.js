@@ -4,23 +4,28 @@ import { Header, Form, Label, Divider, Button, Container, Card } from "semantic-
 const ShowTasks = (props) => {
 
 	console.log("hitting the showTasks function");
-	console.log(props);
-	const taskList = props.tasks.map((task) => {
-		return (
+	// console.log(props);
+	// const taskList = props.tasks.map((task) => {
+	// 	return (
 
-				<Card key={task.id}>
-  				<Card.Content>
-  					<Card.Header>{task.taskName}</Card.Header>
-  					<Card.Header>Days Until Reward Unlocked!</Card.Header>
-  					<Card.Header>{task.coundownToCompletion}</Card.Header>
-  					<Card.Header>Reward: {task.reward}</Card.Header>
-  				</Card.Content>
-  				</Card>
-		)	
-	})
-	console.log(taskList);
+	// 			<Card key={task.id}>
+ //  				<Card.Content>
+ //  					<Card.Header>{task.taskName}</Card.Header>
+ //  					<Card.Header>Days Until Reward Unlocked!</Card.Header>
+ //  					<Card.Header>{task.coundownToCompletion}</Card.Header>
+ //  					<Card.Header>Reward: {task.reward}</Card.Header>
+ //  				</Card.Content>
+ //  				</Card>
+	// 	)	
+	// })
 
-  return <Card.Group>{taskList}</Card.Group>;
+	// console.log(taskList);
+
+  // return <Card.Group>{taskList}</Card.Group>;
+
+  const totList = props.tots.map(t => <p>{t.name}</p>)
+  return <div>{totList}</div>;
+
 };
 
 export default ShowTasks

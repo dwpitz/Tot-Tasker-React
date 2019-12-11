@@ -38,12 +38,12 @@ class App extends React.Component {
     );
     const parsedRegisterResponse = await response.json(); 
       if (parsedRegisterResponse.status.code === 200) {
-    this.setState({
-      loggedIn: true
-    })
-  } else {
-    console.log(parsedRegisterResponse);
-  }   
+        this.setState({
+          loggedIn: true
+        })
+      } else {
+        console.log(parsedRegisterResponse);
+      }   
   }
 
   //These functions switch the state of the UI.  
@@ -76,7 +76,6 @@ class App extends React.Component {
       loadFamilyDash: false
 
     })
-    console.log(this.state);
   }
 
   loadFamilyDash = () => {
@@ -89,7 +88,6 @@ class App extends React.Component {
       
 
     })
-    console.log(this.state);
   }
   
 
@@ -108,12 +106,14 @@ class App extends React.Component {
 
     if(parsedLoginResponse.status === 200) {
       const id = parsedLoginResponse.data[0]._id
+      console.log(parsedLoginResponse.data[0]);
       this.setState({
           loggedIn: true,
-          loadFamilyDash: true,
           familyID: id
+      }, () => {
+        // this.loadFamilyDash();
+        // console.log("hey"); 
       });
-      console.log(parsedLoginResponse.data[0]);
     } else {
       
     }  
@@ -142,8 +142,6 @@ class App extends React.Component {
         tots: parsedTots.data.tots
       });
     } catch (err) {}
-    console.log("State from getTots");
-    console.log(this.state)
 
   };
 
@@ -169,20 +167,20 @@ class App extends React.Component {
     // put tot in array
     this.setState({
         tots: [...this.state.tots, parsedTots.createdTot]
-      });
-    console.log('Here is your state')
-    console.log(this.state);
+    });
 
   }
   
 
 
   render() {
+    console.log('Here is your state.tots in App.js')
+    console.log(this.state.tots);
     return(
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash}/>
 
-        {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
+        {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
 
         {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null }
 

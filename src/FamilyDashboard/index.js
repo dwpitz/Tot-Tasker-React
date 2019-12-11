@@ -10,7 +10,7 @@ class FamilyDashboard extends Component {
   constructor(props) {
     super();
     this.state = {
-      tasks: [],
+      // tasks: [],
       // addTaskModal: false,
       editModalOpen: false,
 
@@ -19,7 +19,6 @@ class FamilyDashboard extends Component {
 
   componentDidMount() {
     this.props.getTots();
-    this.props.loadFamilyDash()
   }
 
   // changeDisplay = () => {
@@ -69,6 +68,7 @@ class FamilyDashboard extends Component {
 
 
   render(){
+    console.log("family dashboard render");
   	return(
   		<div>
           <h1>Task Adder</h1>
