@@ -2,30 +2,42 @@ import React, { Component} from "react";
 import { Header, Form, Label, Divider, Button, Container, Card } from "semantic-ui-react";
 
 const ShowTasks = (props) => {
+	console.log(props.tots);
+  const totList = props.tots.map((tot) => {
+  		return (
 
-	console.log("hitting the showTasks function");
-	// console.log(props);
-	// const taskList = props.tasks.map((task) => {
-	// 	return (
+				<Card>
+  				<Card.Content>
+  					<Card.Header>{tot.name}</Card.Header>
+  					{tot.tasks.map((task) => {
+  						
+  						return <h4>{task.taskName} {task.reward}<br/></h4>
+  					}
 
-	// 			<Card key={task.id}>
- //  				<Card.Content>
- //  					<Card.Header>{task.taskName}</Card.Header>
- //  					<Card.Header>Days Until Reward Unlocked!</Card.Header>
- //  					<Card.Header>{task.coundownToCompletion}</Card.Header>
- //  					<Card.Header>Reward: {task.reward}</Card.Header>
- //  				</Card.Content>
- //  				</Card>
-	// 	)	
-	// })
+  						)}
+  				</Card.Content>
+  				</Card>
+		)
+		const taskList = props.tasks.map((totList) => {
+			return (
 
-	// console.log(taskList);
+				<Card>
+  				<Card.Content>
+  					<Card.Header>{totList.tasks}</Card.Header>
+  				</Card.Content>
+  				</Card>
+		) 		
+  	})
+		return <Card.Group>{taskList}</Card.Group>;
+			
+	})
 
-  // return <Card.Group>{taskList}</Card.Group>;
+  return <Card.Group>{totList}</Card.Group>;
 
-  const totList = props.tots.map(t => <p>{t.name}</p>)
-  return <div>{totList}</div>;
 
 };
+
+
+
 
 export default ShowTasks

@@ -68,7 +68,7 @@ class RegistrationForm extends Component {
 					<Label>Password:</Label>
 					<Form.Input
               			type="text"
-              			name="password"
+              			name="text"
               			value={this.state.password}
               			onChange={this.handleChange}
             		></Form.Input>
