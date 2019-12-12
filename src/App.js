@@ -24,48 +24,6 @@ class App extends React.Component {
       // showLogin: true
     };
   }
-
-  // addCreatedTask 
-  //   createTask = async (taskFromModal) => {
-  //   const createTotResponse = await fetch(
-  //       process.env.REACT_APP_API_URL + "/tasks/" + taskFromModal.tot,
-  //       {
-  //         method: "POST",
-  //         credentials: "include",
-  //         body: JSON.stringify(taskFromModal),
-  //         headers: {
-  //           "Content-Type": "application/json"
-  //         }
-  //       }
-  //     );
-  //   console.log("This is the JSON response after making the fetch call")
-  //   const parsedTasks = await createTotResponse.json();
-  //   console.log(parsedTasks.createTask)
-  //   // put task in array
-  //   const totArray = this.state.tots.map((tot) => {
-  //     if (parsedTasks.createTask.tot === tot._id){
-  //       const taskArray = tot.tasks.map((task) => {
-  //         console.log(taskArray);
-  //         this.setState({
-  //           tasks: [...this.state.tasks, parsedTasks.createTask]
-  //         });
-  //       })
-  //     }   
-  //   }
-  //   )
-    
-  //   const newTotArray = this.state.tots.map((tot) => {
-  //     if (parsedTasks.data.tot === tot._id){
-  //       const newTaskArray = tot.tasks.map((task) => {
-  //         if(parsedTasks.data._id === task._id) {
-  //           task = parsedTasks.data
-  //         }
-  //         return task
-  //       })
-  //     }
-  //     return tot
-  //   })
-  // };
   
 
   updateTask = async (totId, taskId, newCountSoFar) => {

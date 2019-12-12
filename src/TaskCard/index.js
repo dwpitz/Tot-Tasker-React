@@ -24,13 +24,11 @@ import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress  
     console.log(this.props); 
   	return (
   		<div>
-  			<h4>Task: {this.props.task.taskName}</h4>
-  			<h5>Reward: {this.props.task.reward}</h5>
-  			<h5>Days Remaining: {this.props.task.coundownToCompletion}</h5>
+  			<h3>Task: {this.props.task.taskName}</h3>
+  			<h4>Reward: {this.props.task.reward}</h4>
   			<Progress percent={this.props.task.countSoFar / this.props.task.coundownToCompletion * 100} indicating autoSuccess/>
   			<Icon type="Submit" onClick={this.incrementor} name='plus' size='big'/>
   			<Icon type="Submit" onClick={this.decrease} name='minus' size='big'/>
-        <Button type="Submit">Delete Task</Button>
   		</div>
   	)
 

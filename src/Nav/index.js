@@ -36,12 +36,6 @@ class NavBar extends Component {
 				>
 					ADD TOTS
 				</Menu.Item>
-				<Menu.Item
-					name="Logout"
-					onClick={this.props.loadLoginForm}
-				>
-					LOGOUT
-				</Menu.Item>
 			</Menu>
 
 		)
