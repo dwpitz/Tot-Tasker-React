@@ -14,9 +14,16 @@ class ShowTasks extends React.Component {
   render() {
   	const totList = this.props.tots.map((tot) => {
   		return (
+        <Grid
+          columns={1}
+          textAlign="center"
+          style={{ height: "100%" }}
+          verticalAlign="center"
+        >
+          <Grid.Row>
           <Card>
   					<Card.Content>
-  						<Card.Header>{tot.name}</Card.Header>
+  						<Card.Header><h1>{tot.name}</h1></Card.Header>
   						{tot.tasks.map((task) => {
   							return (
   								<TaskCard task={task} totId={tot._id} updateTask={this.props.updateTask}/>
@@ -24,6 +31,8 @@ class ShowTasks extends React.Component {
   						})}
   					</Card.Content>
   				</Card>
+          </Grid.Row>
+        </Grid>
           )
 	})
 	return (<div>

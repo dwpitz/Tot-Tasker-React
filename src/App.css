@@ -31,7 +31,8 @@
 .navBar {
   margin: auto;
   width: 100%;
-  color: red;
+  background: red;
+  text-color: red;
 }
 
 .loginForm {
@@ -53,6 +54,10 @@
   width: 60%;
   border: 1px solid black;
   padding: 5%;
+}
+
+body {
+  background: ADD8E6;
 }
 
 @keyframes App-logo-spin {

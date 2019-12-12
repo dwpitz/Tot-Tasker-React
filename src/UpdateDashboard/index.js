@@ -24,12 +24,14 @@ class UpdateDashboard extends Component {
   	return(
   		<div>
         <Grid>
-          <Grid.Column width={6}>
+          <Grid.Column width={7}>
+          <h1> Add Tots </h1>
   			   <AddTots createTot={this.props.createTot}/> 
           </Grid.Column>
           <Divider hidden />
           <Divider hidden />
-          <Grid.Column width={4}>
+          <Grid.Column width={7}>
+          <h1> Your Tots </h1>
           {this.props.tots.length > 0 ? <ShowTots tots={this.props.tots}/> : null}
           </Grid.Column>
         </Grid>

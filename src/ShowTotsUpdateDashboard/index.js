@@ -4,7 +4,6 @@ import { Card, Header, Form, Label, Divider, Button, Container } from "semantic-
 const ShowTots = (props) => {
 	const totList = props.tots.map((tot) => {
 		return (
-
 				<Card key={tot.id}>
   				<Card.Content>
   					<Card.Header>{tot.name}</Card.Header>

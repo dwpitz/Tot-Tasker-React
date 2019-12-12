@@ -27,7 +27,6 @@ class App extends React.Component {
   
 
   updateTask = async (totId, taskId, newCountSoFar) => {
-    console.log('calling ajax');
     // ajax call
     // matches field in Task you want to update {countSoFar: newCountSoFar}
     try {
@@ -40,13 +39,7 @@ class App extends React.Component {
         "Content-Type": "application/json"
       }
     });
-    console.log("This is the JSON response after making the fetch call")
     const parsedTasks = await updateTaskresponse.json();
-    console.log(parsedTasks.data);
-
-    console.log("this is this.state.tots before updating")
-    console.log(this.state.tots)
-
     const newTotArray = this.state.tots.map((tot) => {
       if (parsedTasks.data.tot === tot._id){
         const newTaskArray = tot.tasks.map((task) => {
@@ -246,7 +239,7 @@ class App extends React.Component {
     console.log(this.state.tots);
     return(
       <div>
-        <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash} logout={this.loadLoginForm}/>
+        <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash} loadLoginForm={this.loadLoginForm}/>
 
         {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot} updateTask={this.updateTask} createTask={this.createTask}/> : null}
 
@@ -269,11 +262,8 @@ class App extends React.Component {
 
         {this.state.loadLogin ? <LoginForm login={this.login} loadLoginForm={this.loadLoginForm} loadRegistrationScreen={this.loadRegistrationScreen}/>: null}           
       </div>
-    )
-    
+    )   
   }
-  
-
 }
 
 

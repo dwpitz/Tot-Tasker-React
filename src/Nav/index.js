@@ -17,6 +17,11 @@ class NavBar extends Component {
 	handleAccountClick = () => {
 		this.props.loadAccountUpdate()
 	}
+
+	handleLogout = () => {
+		this.props.loadLoginForm()
+	}
+	
 	
 
 	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -35,6 +40,12 @@ class NavBar extends Component {
 					onClick={this.handleAccountClick}
 				>
 					ADD TOTS
+				</Menu.Item>
+				<Menu.Item
+					name="Account"
+					onClick={this.handleLogout}
+				>
+					LOGOUT
 				</Menu.Item>
 			</Menu>
 
