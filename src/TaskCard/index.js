@@ -6,21 +6,17 @@ import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress  
 
 
   incrementor = (e) => {
-
     console.log('props in TaskCard');
     console.log(this.props);
     // call props updateTask(totId, taskID, this.props.countSoFar+1)
     this.props.updateTask(this.props.task.tot, this.props.task._id, this.props.task.countSoFar + 1)
   }
 
-
-  // decrease = (e) => {
-  // 	let percent = this.percent--
-  // 	this.setState({
-  // 		countSoFar: percent
-  // 	})
-  //   // this.handleSubmit()
-  // }  
+  decrease = (e) => {
+    console.log('props in TaskCard');
+    console.log(this.props);
+  	this.props.updateTask(this.props.task.tot, this.props.task._id, this.props.task.countSoFar - 1)
+  }  
 
 
   render(){
