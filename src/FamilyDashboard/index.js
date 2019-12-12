@@ -41,9 +41,10 @@ class FamilyDashboard extends Component {
       
     }  
 
+
+//this is going up a level.
   createTask = async (taskFromModal) => {
-    console.log('This Is The Task You Created in the Modal, pre JSON');
-    console.log(taskFromModal.tot);
+
     const createTotResponse = await fetch(
         process.env.REACT_APP_API_URL + "/tasks/" + taskFromModal.tot,
         {
@@ -60,24 +61,15 @@ class FamilyDashboard extends Component {
     console.log(parsedTasks.createTask)
     // put task in array
     this.setState({
-        tasks: [...this.state.tasks, parsedTasks.createTask]
-      });
+      tasks: [...this.state.tasks, parsedTasks.createTask]
+    });
     
 
-  }
+  };
 
 
 
   render(){
-    console.log("family dashboard render");
-    console.log(this.props);
-    console.log(this.props.tots);
-    console.log(this.props.tots.length);
-
-    // let showTasks = this.props.tots.map(tot => {
-    //   <ShowTasks tot=tot/>
-    // })
-
 
    	return(
   		<div>
@@ -86,7 +78,7 @@ class FamilyDashboard extends Component {
 
           {this.props.tots.length > 0 ? <AddTaskModal editModalOpen={this.state.editModalOpen} closeModal={this.closeModal} tots={this.props.tots} createTask={this.createTask}/> : null}
 
-           {/*this.state.tasks.length > 0*/true  ? <ShowTasks tasks={this.state.tasks} tots={this.props.tots} /> : null}
+           {/*this.state.tasks.length > 0*/true  ? <ShowTasks tasks={this.state.tasks} tots={this.props.tots} updateTask={this.props.updateTask}/> : null}
 
 
          
@@ -97,5 +89,5 @@ class FamilyDashboard extends Component {
 }
   export default FamilyDashboard;
 
-           // { showTasks }
+
 

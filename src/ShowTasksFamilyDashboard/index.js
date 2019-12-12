@@ -18,10 +18,9 @@ class ShowTasks extends React.Component {
   						<Card.Header>{tot.name}</Card.Header>
   						{tot.tasks.map((task) => {
   							return (
-  								<TaskCard task={task} />
+  								<TaskCard task={task} totId={tot._id} updateTask={this.props.updateTask}/>
   							)
-  						}
-  						)}
+  						})}
   					</Card.Content>
   				</Card>	
 

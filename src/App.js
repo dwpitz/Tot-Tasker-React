@@ -20,10 +20,24 @@ class App extends React.Component {
       loadFamilyDash: false,
       familyID: "",
       totID: "",
-      tots: [],
+      tots: [], // all data lives here
       // showLogin: true
     };
   }
+
+  // addCreatedTask 
+  
+
+  updateTask = (totId, taskId, newCountSoFar) => {
+    // ajax call
+      // matches field in Task you want to update {countSoFar: newCountSoFar}
+    // if worked (when you hear back if it worked)
+      // updatedTask (response) will be returned with new data
+        // find the tot with totID
+        // find the task in that tot's tasks array
+        // replace it with the updatedTask
+  }
+  
 
   register = async (registerInfo) => {
     const response = await fetch(process.env.REACT_APP_API_URL + '/family/register', 
@@ -180,7 +194,18 @@ class App extends React.Component {
 
         {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
 
-        {this.state.loadAccountUpdate ? <UpdateDashboard familyID={this.state.familyID} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null }
+        {
+          this.state.loadAccountUpdate 
+          ? 
+          <UpdateDashboard 
+            familyID={this.state.familyID} 
+            tots={this.state.tots} 
+            getTots={this.getTots} 
+            createTot={this.createTot}
+          /> 
+          : 
+          null 
+        }
 
         {this.loggedIn ? this.state.loadLoginForm=false : null}
 
