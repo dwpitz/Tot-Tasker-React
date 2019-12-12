@@ -28,11 +28,61 @@ class App extends React.Component {
   // addCreatedTask 
   
 
-  updateTask = (totId, taskId, newCountSoFar) => {
+  updateTask = async (totId, taskId, newCountSoFar) => {
+    console.log('calling ajax');
     // ajax call
-      // matches field in Task you want to update {countSoFar: newCountSoFar}
+    // matches field in Task you want to update {countSoFar: newCountSoFar}
+    try {
+      const updateTaskresponse = await fetch(process.env.REACT_APP_API_URL + "/tasks/" + taskId,
+    {
+      method: "PUT",
+      credentials: "include",
+      body: JSON.stringify({countSoFar: newCountSoFar}),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    console.log("This is the JSON response after making the fetch call")
+    const parsedTasks = await updateTaskresponse.json();
+    console.log(parsedTasks.data);
+
+    console.log("this is this.state.tots before updating")
+    console.log(this.state.tots)
+
+    const newTotArray = this.state.tots.map((tot) => {
+      if (parsedTasks.data.tot === tot._id){
+        const newTaskArray = tot.tasks.map((task) => {
+          if(parsedTasks.data._id === task._id) {
+            task = parsedTasks.data
+          }
+          return task
+        })
+      }
+      return tot
+    })
+
+    console.log("this is newTotArray")
+    console.log(newTotArray)
+
+    this.setState.tots = {newTotArray}
+
+
+
+
+
+
+
+
+    }
+    catch (err) {
+      console.log(err)
+    }
+
+      
     // if worked (when you hear back if it worked)
-      // updatedTask (response) will be returned with new data
+      // updatedTask (response) will be returned with new date
+
+
         // find the tot with totID
         // find the task in that tot's tasks array
         // replace it with the updatedTask
@@ -192,7 +242,7 @@ class App extends React.Component {
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash}/>
 
-        {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot}/> : null}
+        {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot} updateTask={this.updateTask}/> : null}
 
         {
           this.state.loadAccountUpdate 

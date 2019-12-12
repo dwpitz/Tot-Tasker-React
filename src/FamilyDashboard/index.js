@@ -39,10 +39,11 @@ class FamilyDashboard extends Component {
         editModalOpen: false
       })
       
-    }  
+    } 
 
+ 
 
-//this is going up a level.
+//this is going up a level to fix the add task problem. and we need to reference the tasks in app.js
   createTask = async (taskFromModal) => {
 
     const createTotResponse = await fetch(
