@@ -53,9 +53,6 @@ class App extends React.Component {
     }
     )
     
-
-
-
     const newTotArray = this.state.tots.map((tot) => {
       if (parsedTasks.data.tot === tot._id){
         const newTaskArray = tot.tasks.map((task) => {
@@ -206,6 +203,32 @@ class App extends React.Component {
 
   }
 
+
+  logout = async () => {
+    const response = await fetch(
+      // fetch the response from the API
+      process.env.REACT_APP_API_URL + "/family/logout",
+      {
+        method: "GET",
+        // this is the cookies
+        credentials: "include",
+        body: JSON.stringify(),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    const parsedLogoutResponse = await response.json();
+
+    if (parsedLogoutResponse.status.code === 200) {
+      this.setState({
+        loggedIn: false
+      });
+    } else {
+      console.log(parsedLogoutResponse);
+    }
+  };
+
   getTots = async () => {
     console.log('hitting Get Tots');
     try {
@@ -264,7 +287,7 @@ class App extends React.Component {
     console.log(this.state.tots);
     return(
       <div>
-        <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash}/>
+        <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash} logout={this.loadLoginForm}/>
 
         {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot} updateTask={this.updateTask} createTask={this.createTask}/> : null}
 

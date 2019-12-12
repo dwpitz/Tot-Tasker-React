@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress  } from "semantic-ui-react";
+import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress, Grid  } from "semantic-ui-react";
 import TaskCard from '../TaskCard'
 
 class ShowTasks extends React.Component {
@@ -13,7 +13,8 @@ class ShowTasks extends React.Component {
 
   render() {
   	const totList = this.props.tots.map((tot) => {
-  		return 	<Card>
+  		return (
+          <Card>
   					<Card.Content>
   						<Card.Header>{tot.name}</Card.Header>
   						{tot.tasks.map((task) => {
@@ -22,8 +23,8 @@ class ShowTasks extends React.Component {
   							)
   						})}
   					</Card.Content>
-  				</Card>	
-
+  				</Card>
+          )
 	})
 	return (<div>
 				{totList}
@@ -34,18 +35,5 @@ class ShowTasks extends React.Component {
 
 }
 
-
-
-  							// return (
-  							// 	<div>
-  							// 		<h4>Task: {task.taskName}</h4>
-  							// 		<h5>Reward: {task.reward}</h5>
-  							// 		<h5>Days Remaining: {task.	coundownToCompletion}</h5>
-
-  							// 		<Progress percent={this.state.percentage}	indicating autoSuccess/>
-  							// 		<Icon onClick={this.incrementor} name='plus' size='large'/>
-  							// 		<Icon name='minus' size='large'/>
-  							// 	</div>
-  							// )
 
 export default ShowTasks

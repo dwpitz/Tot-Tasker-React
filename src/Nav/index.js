@@ -38,7 +38,7 @@ class NavBar extends Component {
 				</Menu.Item>
 				<Menu.Item
 					name="Logout"
-					// onClick={}
+					onClick={this.props.loadLoginForm}
 				>
 					LOGOUT
 				</Menu.Item>
