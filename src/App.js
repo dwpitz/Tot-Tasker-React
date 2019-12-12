@@ -26,6 +26,48 @@ class App extends React.Component {
   }
 
   // addCreatedTask 
+    createTask = async (taskFromModal) => {
+    const createTotResponse = await fetch(
+        process.env.REACT_APP_API_URL + "/tasks/" + taskFromModal.tot,
+        {
+          method: "POST",
+          credentials: "include",
+          body: JSON.stringify(taskFromModal),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+    console.log("This is the JSON response after making the fetch call")
+    const parsedTasks = await createTotResponse.json();
+    console.log(parsedTasks.createTask)
+    // put task in array
+    const totArray = this.state.tots.map((tot) => {
+      if (parsedTasks.createTask.tot === tot._id){
+        const taskArray = tot.tasks.map((task) => {
+          this.setState({
+            tasks: [...this.state.tasks, parsedTasks.createTask]
+          });
+        })
+      }   
+    }
+    )
+    
+
+
+
+    const newTotArray = this.state.tots.map((tot) => {
+      if (parsedTasks.data.tot === tot._id){
+        const newTaskArray = tot.tasks.map((task) => {
+          if(parsedTasks.data._id === task._id) {
+            task = parsedTasks.data
+          }
+          return task
+        })
+      }
+      return tot
+    })
+  };
   
 
   updateTask = async (totId, taskId, newCountSoFar) => {
@@ -61,31 +103,13 @@ class App extends React.Component {
       return tot
     })
 
-    console.log("this is newTotArray")
-    console.log(newTotArray)
-
     this.setState.tots = {newTotArray}
-
-
-
-
-
-
-
 
     }
     catch (err) {
       console.log(err)
     }
 
-      
-    // if worked (when you hear back if it worked)
-      // updatedTask (response) will be returned with new date
-
-
-        // find the tot with totID
-        // find the task in that tot's tasks array
-        // replace it with the updatedTask
   }
   
 
@@ -242,7 +266,7 @@ class App extends React.Component {
       <div>
         <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash}/>
 
-        {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot} updateTask={this.updateTask}/> : null}
+        {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot} updateTask={this.updateTask} createTask={this.createTask}/> : null}
 
         {
           this.state.loadAccountUpdate 

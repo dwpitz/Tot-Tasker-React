@@ -28,13 +28,13 @@ class NavBar extends Component {
 					name="Tot Tasker"
 					onClick={this.handleHomeClick}
 				>
-					TOT TASKER
+					ADD TASKS
 				</Menu.Item>
 				<Menu.Item
 					name="Account"
 					onClick={this.handleAccountClick}
 				>
-					ACCOUNT
+					ADD TOTS
 				</Menu.Item>
 				<Menu.Item
 					name="Logout"
