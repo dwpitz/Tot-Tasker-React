@@ -27,7 +27,7 @@ class App extends React.Component {
   
 
   updateTask = async (totId, taskId, newCountSoFar) => {
-    // ajax call
+    console.log("hello..working");
     // matches field in Task you want to update {countSoFar: newCountSoFar}
     try {
       const updateTaskresponse = await fetch(process.env.REACT_APP_API_URL + "/tasks/" + taskId,
@@ -39,8 +39,10 @@ class App extends React.Component {
         "Content-Type": "application/json"
       }
     });
+      //Map through the Tots array in state.  See if there is a totID that matches...
     const parsedTasks = await updateTaskresponse.json();
     const newTotArray = this.state.tots.map((tot) => {
+      //If there is, see if there is a task ID that matches...
       if (parsedTasks.data.tot === tot._id){
         const newTaskArray = tot.tasks.map((task) => {
           if(parsedTasks.data._id === task._id) {
@@ -51,8 +53,9 @@ class App extends React.Component {
       }
       return tot
     })
-
+    //If they match we are setting state with the new TotArray.  
     this.setState.tots = {newTotArray}
+    console.log(this.state.tots);
 
     }
     catch (err) {
@@ -96,10 +99,12 @@ class App extends React.Component {
   loadLoginForm = () => {
     console.log('hitting this...');
     this.setState({
+      loggedIn: false,
       loadLogin: true,
       loadRegistration: false,
       loadAccountUpdate: false,
       loadFamilyDash: false
+
 
     })
   }
@@ -239,7 +244,7 @@ class App extends React.Component {
     console.log(this.state.tots);
     return(
       <div>
-        <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash} loadLoginForm={this.loadLoginForm}/>
+        <NavBar loadAccountUpdate={this.loadAccountUpdate} loadFamilyDash={this.loadFamilyDash} loadLoginForm={this.loadLoginForm} loggedIn={this.state.loggedIn}/>
 
         {this.state.loadFamilyDash ? <FamilyDashboard loadFamilyDash={this.loadFamilyDash} tots={this.state.tots} getTots={this.getTots} createTot={this.createTot} updateTask={this.updateTask} createTask={this.createTask}/> : null}
 

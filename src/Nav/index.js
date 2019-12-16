@@ -10,16 +10,28 @@ class NavBar extends Component {
 	}
 
 	handleHomeClick = () => {
-		this.props.loadFamilyDash()
+		if(this.props.loggedIn){
+			this.props.loadFamilyDash()
+		} else {
+			return null
+		}
 	}
-	
 
 	handleAccountClick = () => {
-		this.props.loadAccountUpdate()
+		if(this.props.loggedIn){
+			this.props.loadAccountUpdate()
+		} else {
+			return null
+		}
+		
 	}
 
 	handleLogout = () => {
-		this.props.loadLoginForm()
+		if(this.props.loggedIn){
+			this.props.loadLoginForm()
+		} else {
+			return null
+		}
 	}
 	
 	
@@ -29,6 +41,11 @@ class NavBar extends Component {
 	render() {
 		return (
 			<Menu className="navBar">
+				<Menu.Item
+					name="TOT TASKER"
+				>
+					TOT TASKER
+				</Menu.Item>
 				<Menu.Item
 					name="Tot Tasker"
 					onClick={this.handleHomeClick}

@@ -1,6 +1,7 @@
 import React, { Component} from "react";
 import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress, Grid  } from "semantic-ui-react";
 import TaskCard from '../TaskCard'
+import '../App.css';
 
 class ShowTasks extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class ShowTasks extends React.Component {
   	const totList = this.props.tots.map((tot) => {
   		return (
         <Grid
+          className="taskCard"
           columns={1}
           textAlign="center"
           style={{ height: "100%" }}

@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import { Header, Form, Label, Divider, Button, Container, Modal } from "semantic-ui-react";
+import '../App.css';
 
 class AddTaskModal extends Component {
 	constructor(props) {

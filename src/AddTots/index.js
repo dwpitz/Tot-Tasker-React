@@ -41,23 +41,6 @@ class AddTots extends Component {
               			onChange={this.handleChange}
             		></Form.Input>
             		</Form.Field>
-					<Divider hidden />
-					<Form.Field>
-					<Label>Add Image:</Label>
-					<Form.Input
-              			type="text"
-              			name="image"
-              			value={this.state.image}
-              			onChange={this.handleChange}
-            		></Form.Input>
-            		<Divider hidden />
-          <Button type="Submit">
-            Add Tots
-                </Button>
-                <Divider hidden />
-            		</Form.Field>
-					
-          
             	</Form>
             	</Container>
 			</div>

@@ -2,8 +2,11 @@ import React, { Component} from "react";
 import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress  } from "semantic-ui-react";
 
 
-
  class TaskCard extends Component {
+
+  componentDidMount() {
+    this.render()
+  }
 
 
   incrementor = (e) => {
@@ -17,15 +20,14 @@ import { Header, Form, Label, Divider, Button, Container, Card, Icon, Progress  
 
 
   render(){
-    // console.log("this.props in TaskCard");
-    console.log(this.props); 
   	return (
   		<div>
   			<h3>Task: {this.props.task.taskName}</h3>
   			<h4>Reward: {this.props.task.reward}</h4>
-  			<Progress percent={this.props.task.countSoFar / this.props.task.coundownToCompletion * 100} indicating autoSuccess/>
         <Icon type="Submit" onClick={this.decrease} name='minus' size='big'/>
-  			<Icon type="Submit" onClick={this.incrementor} name='plus' size='big'/>	
+        <Icon type="Submit" onClick={this.incrementor} name='plus' size='big'/>
+  			<Progress percent={this.props.task.countSoFar / this.props.task.coundownToCompletion * 100} indicating autoSuccess label/>
+	
   		</div>
   	)
 
